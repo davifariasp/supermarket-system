@@ -20,6 +20,10 @@ public class PurchaseItem {
         return product.getPrice() * quantity;
     }
 
+    public int getPriceUnity(){
+        return product.getPrice();
+    }
+
     public List<Promotion> getPromotions(){
         return product.getPromotions();
     }

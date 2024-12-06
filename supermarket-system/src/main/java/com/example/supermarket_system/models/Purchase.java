@@ -22,6 +22,8 @@ public class Purchase {
         this.products = products;
         this.total = products.stream().map(PurchaseItem::getPrice).reduce(0, Integer::sum);
         this.discount = 0;
+
+        availablePromotions();
     }
 
     public void availablePromotions(){
@@ -69,21 +71,34 @@ public class Purchase {
 
             //quantas vezes pode ser aplicada (tem q ser um resultado inteiro)
             int xApply = purchaseItem.getQuantity() / qtyPromotion.getRequiredQuantity();
-
             int priceApply = qtyPromotion.getPrice();
 
-            //se no caso se applicar só uma vez, ao inves de ser X vai ser Y
-            for (int i = 0; i < xApply; i++) {
-                //product.setPrice(priceApply);
-            }
+            int descontoTotal = xApply * qtyPromotion.getPrice();
+
+            setDiscount(descontoTotal);
         }
 
         if(promotion instanceof FlatPercentPromotion flatPromotion){
+            int descontoTotal = 0;
+            int totalProdutos = purchaseItem.getQuantity();
 
+            for(int i = 0; i < totalProdutos; i++){
+                descontoTotal += purchaseItem.getPriceUnity() * (flatPromotion.getAmount() / 100);
+            }
+
+            applyDiscount(descontoTotal);
         }
 
         if(promotion instanceof BuyXGetYFreePromotion buyPromotion){
 
+            int xApply = purchaseItem.getQuantity() / buyPromotion.getRequiredQuantity();
+            int descontoTotal = xApply * purchaseItem.getPriceUnity();
+
+            applyDiscount(descontoTotal);
         }
+    }
+
+    public void applyDiscount(int discount){
+        this.discount += discount;
     }
 }
