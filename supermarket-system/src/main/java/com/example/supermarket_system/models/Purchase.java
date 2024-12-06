@@ -26,10 +26,10 @@ public class Purchase {
 
     public void availablePromotions(){
 
-        products.forEach(product -> {
-            List<Promotion> promotions = product.getPromotions();
+        products.forEach(purchaseItem -> {
+            List<Promotion> promotions = purchaseItem.getPromotions();
             promotions.forEach(promotion -> {
-                applyPromotion(product, promotion);
+                applyPromotion(purchaseItem, promotion);
             });
         });
 
