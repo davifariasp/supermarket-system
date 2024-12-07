@@ -46,14 +46,14 @@ export function Cart({ items, onUpdateQuantity, onRemoveItem, onCheckout }: Cart
             <>
               {items.map((item) => (
                 <div key={item.id} className="flex items-center gap-4 py-4 border-b">
-                  <div className="relative h-16 w-16">
+                  {/* <div className="relative h-16 w-16">
                     <Image
                       src={item.image}
                       alt={item.name}
                       fill
                       className="object-cover rounded"
                     />
-                  </div>
+                  </div> */}
                   <div className="flex-1">
                     <h4 className="font-medium">{item.name}</h4>
                     <p className="text-sm text-muted-foreground">

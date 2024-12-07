@@ -15,14 +15,14 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
   return (
     <Card className="overflow-hidden">
       <CardContent className="p-0">
-        <div className="relative h-48 w-full">
+        {/* <div className="relative h-48 w-full">
           <Image
             src={product.image}
             alt={product.name}
             fill
             className="object-cover"
           />
-        </div>
+        </div> */}
         <div className="p-4">
           <h3 className="font-semibold text-lg">{product.name}</h3>
           <p className="text-sm text-muted-foreground">{product.description}</p>
