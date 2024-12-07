@@ -16,14 +16,15 @@ public class Purchase {
     private List<PurchaseItem> products;
     private int total;
     private int discount;
+    private int finalPrice;
 
     public Purchase(List<PurchaseItem> products) {
         this.id = UUID.randomUUID();
         this.products = products;
         this.total = products.stream().map(PurchaseItem::getPrice).reduce(0, Integer::sum);
         this.discount = 0;
-
         availablePromotions();
+        this.finalPrice = total - discount;
     }
 
     public void availablePromotions(){
@@ -71,8 +72,6 @@ public class Purchase {
 
             //quantas vezes pode ser aplicada (tem q ser um resultado inteiro)
             int xApply = purchaseItem.getQuantity() / qtyPromotion.getRequiredQuantity();
-            int priceApply = qtyPromotion.getPrice();
-
             int descontoTotal = xApply * qtyPromotion.getPrice();
 
             setDiscount(descontoTotal);

@@ -1,6 +1,7 @@
 package com.example.supermarket_system.controllers;
 
 import com.example.supermarket_system.dtos.request.PurchaseRequestDto;
+import com.example.supermarket_system.dtos.response.PurchaseResponse;
 import com.example.supermarket_system.services.PurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,10 +18,7 @@ public class PurchaseController {
     PurchaseService purchaseService;
 
     @PostMapping
-    public ResponseEntity buy(@RequestBody PurchaseRequestDto request) {
-
-        purchaseService.getProducts(request);
-
-        return ResponseEntity.ok().build();
+    public ResponseEntity<PurchaseResponse> buy(@RequestBody PurchaseRequestDto request) {
+        return ResponseEntity.ok(purchaseService.doPurchase(request));
     }
 }
