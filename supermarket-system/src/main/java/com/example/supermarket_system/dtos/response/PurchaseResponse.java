@@ -8,7 +8,7 @@ public record PurchaseResponse(
         List<PurchaseItemResponse> products,
         List<String> promotions,
         int total,
-        int descount,
+        int discount,
         int finalPrice
 ) {
 }
