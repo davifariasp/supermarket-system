@@ -1,8 +1,6 @@
 <p align="center">
   <a href="#technologies">Technologies</a>
   &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#deploy">Deploy</a>
-  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#follow-up-questions">Questions</a>
 </p>
 
@@ -25,18 +23,12 @@
 - NextJS
 - Tailwhind
 
-## Deploy
-- App:
-- API:
-
 ## Follow up questions
 
 <h3> 1. How long did you spend on the test? What would you add if you had more time? </h1>
 <p>
 I’m not sure exactly, but it took me between 3 and 4 days. I worked on the test during my spare time. I believe i could have added more tests, but i chose to simplify.
 </p>
-
-    
 
 
 <h3> 2. What was the most useful feature that was added to the latest version of your chosen language? Please include a snippet of code that
@@ -75,7 +67,7 @@ if(promotion instanceof QuantityBasedPriceOverridePromotion qtyPromotion){
 <h3> 4. What mechanism did you put in place to track down issues in production on this code? If you didn’t put anything, write down what you
 could do. </h3>
 
-<p>I didn't implement any mechanism to track issues or errors in production, but in this case, problems related to Spring Web are already handled and return errors via HTTP status. I also implemented RuntimeExceptions for runtime errors in the code. What could be improved is creating a class to better handle and process these errors. On the front end, I also implemented alerts for when it's not possible to perform an action via the API (such as retrieving or sending data, for example).</p>
+<p>I didn't implement any mechanism to track issues or errors in production, but in this case, problems related to Spring Web are already handled and return errors via HTTP status. I also implemented RuntimeExceptions with class APIException for runtime errors in the code. On the front end, I also implemented alerts for when it's not possible to perform an action via the API (such as retrieving or sending data, for example).</p>
 
 <h3> 5. Explain your interpretation of the list of requirements and what was delivered or not delivered and why. </h3>
 
