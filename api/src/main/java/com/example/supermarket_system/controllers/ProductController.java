@@ -21,7 +21,6 @@ public class ProductController {
 
     @GetMapping("/{productId}")
     public ResponseEntity getProductsById(@PathVariable String productId){
-
         return ResponseEntity.ok(wiremockService.getProductsById(productId));
     }
 }
