@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(APIException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
     public ResponseEntity<String> handleApiException(APIException ex) {
         // Retorna apenas a mensagem da exceção
         return ResponseEntity.status(ex.getStatus()).body(ex.getMessage());
