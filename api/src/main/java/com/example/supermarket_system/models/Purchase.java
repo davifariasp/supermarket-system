@@ -6,6 +6,7 @@ import com.example.supermarket_system.models.promotions.QuantityBasedPriceOverri
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,6 +15,7 @@ import java.util.UUID;
 public class Purchase {
     private UUID id;
     private List<PurchaseItem> products;
+    private List<Promotion> promotions = new ArrayList<>();
     private int total;
     private int discount;
     private int finalPrice;
@@ -74,7 +76,10 @@ public class Purchase {
             int xApply = purchaseItem.getQuantity() / qtyPromotion.getRequiredQuantity();
             int descontoTotal = xApply * qtyPromotion.getPrice();
 
-            setDiscount(descontoTotal);
+            if (purchaseItem.getQuantity() >= qtyPromotion.getRequiredQuantity()) {
+                this.getPromotions().add(qtyPromotion);
+                applyDiscount(descontoTotal);
+            }
         }
 
         if(promotion instanceof FlatPercentPromotion flatPromotion){
@@ -85,6 +90,7 @@ public class Purchase {
                 descontoTotal += purchaseItem.getPriceUnity() * (flatPromotion.getAmount() / 100);
             }
 
+            this.getPromotions().add(flatPromotion);
             applyDiscount(descontoTotal);
         }
 
@@ -93,7 +99,10 @@ public class Purchase {
             int xApply = purchaseItem.getQuantity() / buyPromotion.getRequiredQuantity();
             int descontoTotal = xApply * purchaseItem.getPriceUnity();
 
-            applyDiscount(descontoTotal);
+            if(purchaseItem.getQuantity() >= buyPromotion.getRequiredQuantity()){
+                this.getPromotions().add(buyPromotion);
+                applyDiscount(descontoTotal);
+            }
         }
     }
 

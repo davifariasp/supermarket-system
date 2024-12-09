@@ -49,11 +49,8 @@ public class PurchaseService {
                                 purchaseItem.getQuantity()
                         ))
                         .toList(),
-                purchase.getProducts().stream()
-                        .map(purchaseItem -> purchaseItem.getPromotions().stream()
-                                .map(Promotion::getType)
-                                .toList())
-                        .flatMap(List::stream)
+                purchase.getPromotions().stream()
+                        .map(Promotion::getType)
                         .toList(),
                 purchase.getTotal(),
                 purchase.getDiscount(),
